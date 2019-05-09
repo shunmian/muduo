@@ -4,11 +4,13 @@
 
 #undef NDEBUG
 
+// the standard c library
 #include <assert.h>
 #include <errno.h>
 #include <stdio.h>
 #include <unistd.h>
 
+// the POSIX library
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
@@ -198,7 +200,7 @@ void receive(const Options& opt)
       exit(1);
     }
   }
-  ::free(payload);
+  ::free(payload);  // :: without prefix means global namespace
   ::close(sockfd);
 }
 
